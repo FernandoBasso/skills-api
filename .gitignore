@@ -1,0 +1,15 @@
+#
+# .gitignore
+#
+
+##
+# The node_modules directory should never be commited, of course.
+node_modules
+
+##
+# We NEVER commit the ‘.env’ file. Rather, we commit a ‘.env.example’
+# file with all the required keys with examples and only set real
+# values on the local, git-ignored ‘.env’ file.
+#
+.env
+
