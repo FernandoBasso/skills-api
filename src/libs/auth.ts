@@ -15,7 +15,7 @@ import {
 
 import {
   IUser,
-} from 'src/types/User';
+} from 'src/types/User.t';
 
 /**
  * Generates a new session token that allow the user to access restriced resources.

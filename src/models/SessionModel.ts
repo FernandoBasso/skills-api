@@ -2,14 +2,17 @@ import bcrypt from 'bcryptjs';
 
 import {
   IUser,
-  IUserNotFound,
+} from 'src/types/User.t';
+
+import {
+  IHTTPNotFound,
+  IHTTPUnprocessableEntity,
   IUnauthenticated,
-  IUserInvalid,
-} from 'src/types/User';
+} from 'src/types/HTTPStatuses.t';
 
 import {
   TToken,
-} from 'src/types/Session';
+} from 'src/types/Session.t';
 
 import {
   findByEmail,
@@ -25,14 +28,13 @@ import {
  */
 async function create (
   user: IUser
-): Promise<IUserInvalid | IUserNotFound | IUnauthenticated | TToken> {
-  console.log('==== login', user);
+): Promise<IHTTPUnprocessableEntity | IHTTPNotFound | IUnauthenticated | TToken> {
   const { email, password } = user;
   if (!email || !password) {
     return {
       status: 422,
       message: 'Invalid login data',
-    } as IUserInvalid;
+    } as IHTTPUnprocessableEntity;
   }
 
   const foundUser: null | IUser = await findByEmail(email);
@@ -41,7 +43,7 @@ async function create (
     return {
       status: 404,
       message: `User with email “${email}” was not found.`,
-    } as IUserNotFound;
+    } as IHTTPNotFound;
   }
 
   const passwordMatch = await bcrypt.compare(password, foundUser.password);

@@ -7,9 +7,12 @@ import bcrypt from 'bcryptjs';
 import {
   IUserSignUp,
   IUser,
-  IUserInvalid,
-  IUserExists,
-} from 'src/types/User';
+} from 'src/types/User.t';
+
+import {
+  IHTTPUnprocessableEntity,
+  IHTTPConflict,
+} from 'src/types/HTTPStatuses.t';
 
 const User = mongoose.model<IUser & Document>('user', new mongoose.Schema({
   name: {
@@ -43,14 +46,14 @@ async function findByEmail (email: string): Promise<null | Document & IUser> {
 
 async function create (
   signInData: IUserSignUp
-): Promise<IUserExists | IUserInvalid | IUser> {
+): Promise<IHTTPConflict | IHTTPUnprocessableEntity | IUser> {
   const { email, password } = signInData;
 
   if (!email || !password) {
     return {
       status: 422,
       message: 'Invalid sign in data provided',
-    } as IUserInvalid;
+    } as IHTTPUnprocessableEntity;
   }
 
   const found = await User.findOne({ email });
@@ -59,7 +62,7 @@ async function create (
     return {
       status: 409,
       message: 'An user with that email already exists',
-    } as IUserExists;
+    } as IHTTPConflict;
   }
 
   const user = new User({

@@ -8,7 +8,7 @@ import {
 
 import {
   IUser,
-} from 'src/types/User';
+} from 'src/types/User.t';
 
 import {
   create,

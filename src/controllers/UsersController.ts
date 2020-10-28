@@ -8,8 +8,11 @@ import {
 
 import {
   IUserSignUp,
+} from 'src/types/User.t';
+
+import {
   tgHasStatusCode,
-} from 'src/types/User';
+} from 'src/types/HTTPStatuses.t';
 
 import {
   create as userCreate,
