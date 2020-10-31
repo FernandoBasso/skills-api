@@ -1,6 +1,8 @@
 # Express API
 
 - [Express API](#express-api)
+  - [Setup](#setup)
+  - [API Server](#api-server)
   - [OpenAPI and Swagger](#openapi-and-swagger)
   - [Coding Conventions](#coding-conventions)
   - [Ideas](#ideas)
@@ -9,19 +11,47 @@ A CRUD API application that allows users to store their skills. It is a project 
 
 **NOTE**: The main repository where issues and discussions are held is the [Skills-API on Gitlab](https://gitlab.com/fernandobasso/skills-api). The [Github repo](https://github.com/FernandoBasso/skills-api) is just a mirror.
 
+**NOTE**: All the commands should be run from the root directory of the project unless otherwise noted.
+
+
+## Setup
+
+Install [nvm](https://github.com/nvm-sh/nvm) then run:
+
+```
+$ nvm install < .nvmrc
+$ npm install
+```
+
+
+## API Server
+
+Add this line to `/etc/hosts`:
+
+```
+127.0.0.1 http://skillsapi.local
+```
+
+Then run:
+
+```
+$ npm run api
+```
+
+
 ## OpenAPI and Swagger
 
 Add this line to `/etc/hosts`:
 
 ```
 # /etc/hosts file.
-127.0.0.1 http://skillsapi.local
+127.0.0.1 http://swagger.skillsapi.local
 ```
 
 Run
 
 ```
-$ npm run swagger
+$ npm run swaggerui
 ```
 
 Then point your browser to the URL http://swagger.skillsapi.local:3002/?url=openapi.yml which was logged on the terminal.
@@ -43,7 +73,6 @@ Now you can point your browser to http://myswaggerui.local:8432/?url=openapi.yml
 - Name models like `UserModel` and `CategoryModel`. Use the singular form.
 - Name controllers like `UsersController` and `CategoriesController`. The controller noun is usually in the plural.
 - Favor a functional programming style and shy away from classes or OO (PS: I'm not against OO and classes, but for this project I'll stick to a FP style of programming).
-
 
 
 ## Ideas
