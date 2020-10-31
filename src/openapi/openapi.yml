@@ -1,0 +1,14 @@
+openapi: 3.0.3
+info:
+  title: Skills API
+  description: A server where users can register and announce their skills
+  license:
+    name: GPL-3.0
+    url: https://www.gnu.org/licenses/gpl-3.0.txt
+  version: 0.0.1
+servers:
+  - url: http://skillsapi.local:3001
+    description: Skills API Development Server
+paths:
+  /skills:
+    $ref: './paths/skills.yml'

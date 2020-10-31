@@ -1,5 +1,7 @@
 import express from 'express';
 import bodyParser from 'body-parser';
+import swaggerUI from 'swagger-ui-express';
+import YAML from 'yamljs';
 
 import dotenv from 'dotenv';
 
@@ -36,6 +38,11 @@ const PORT = Number(process.env.PORT) || 3001;
 
 const app = express();
 app.use(bodyParser.json());
+
+const swaggerDoc = YAML.load('src/openapi/openapi.yml');
+app.use('/apidocs', swaggerUI.serve, swaggerUI.setup(swaggerDoc, {
+  explorer: true,
+}));
 
 ////
 // Register the routes.

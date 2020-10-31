@@ -1,20 +1,35 @@
 # Express API
 
-A CRUD API application that allows users to store their skills.
+- [Express API](#express-api)
+  - [OpenAPI and Swagger](#openapi-and-swagger)
+  - [Coding Conventions](#coding-conventions)
 
-A project to research, study and practice building a RESTful API using Node, TypeScript, Express, MongoDB, JWT and other related libraries. Good practices, correct usage of HTTP status codes and compliance with the OpenAPI are also goals.
+A CRUD API application that allows users to store their skills. It is a project to research, study and practice building a RESTful OpenAPI-compliant API using Node, TypeScript, Express, MongoDB, JWT, Swagger and other related libraries. Good practices and correct usage of HTTP status codes are a must while implementing this project.
 
-Example:
+## OpenAPI and Swagger
+
+Add this line to `/etc/hosts`:
 
 ```
-  user1:
-    - JavaScript
-      - topics, closures, lexical-scope, functions.
-    - Ruby
-    -   topics: Singleton, classes, methods, irb
+# /etc/hosts file.
+127.0.0.1 http://skillsapi.local
 ```
 
-Each topic can link to a description of what that person has done, their experience in that topic.
+Run
+
+```
+$ npm run swagger
+```
+
+Now you can point your browser to the URL http://swagger.skillsapi.local:3002/?url=openapi.yml which was logged on the terminal.
+
+It is also possible to start the server with a different host and port. Just make sure that whatever host you pass as an env var also exists in `/etc/hosts` as an alias to 127.0.0.1 (as exemplified above):
+
+```
+$ SWAGGER_HOST=myswaggerui.local SWAGGER_PORT=8432 npm run swagger
+```
+
+You'll see the URL http://myswaggerui.local:8432/?url=openapi.yml logged on your terminal.
 
 
 ## Coding Conventions
@@ -25,4 +40,24 @@ Each topic can link to a description of what that person has done, their experie
 - Name models like `UserModel` and `CategoryModel`. Use the singular form.
 - Name controllers like `UsersController` and `CategoriesController`. The controller noun is usually in the plural.
 - Favor a functional programming style and shy away from classes or OO (PS: I'm not against OO and classes, but for this project I'll stick to a FP style of programming).
+
+
+
+## Ideas
+
+*NOTE*: This is a brainstorming section as of now.
+
+Example:
+
+```
+  user1:
+    - JavaScript
+      - topics, closures, - [Express API](#express-api)
+  - [OpenAPI and Swagger](#openapi-and-swagger)
+  - [Coding Conventions](#coding-conventions)lexical-scope, functions.
+    - Ruby,
+    -   topics: Singleton, classes, methods, irb
+```
+
+Each topic can link to a description of what that person has done, their experience in that topic.
 
