@@ -24,7 +24,7 @@ Run
 $ npm run swagger
 ```
 
-Now you can point your browser to the URL http://swagger.skillsapi.local:3002/?url=openapi.yml which was logged on the terminal.
+Then point your browser to the URL http://swagger.skillsapi.local:3002/?url=openapi.yml which was logged on the terminal.
 
 It is also possible to start the server with a different host and port. Just make sure that whatever host you pass as an env var also exists in `/etc/hosts` as an alias to 127.0.0.1 (as exemplified above):
 
@@ -32,7 +32,7 @@ It is also possible to start the server with a different host and port. Just mak
 $ SWAGGER_HOST=myswaggerui.local SWAGGER_PORT=8432 npm run swagger
 ```
 
-You'll see the URL http://myswaggerui.local:8432/?url=openapi.yml logged on your terminal.
+Now you can point your browser to http://myswaggerui.local:8432/?url=openapi.yml, as logged on your terminal.
 
 
 ## Coding Conventions
@@ -48,7 +48,7 @@ You'll see the URL http://myswaggerui.local:8432/?url=openapi.yml logged on your
 
 ## Ideas
 
-*NOTE*: This is a brainstorming section as of now.
+**NOTE**: This is a brainstorming section as of now.
 
 Example:
 

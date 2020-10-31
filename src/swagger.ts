@@ -72,6 +72,7 @@ const swaggerUIUrl = String.prototype.concat(
   SWAGGER_HOST,
   ':',
   String(SWAGGER_PORT),
+  `/?url=${SWAGGER_OPENAPI_SPEC_FILE_PATH}`,
 );
 
 ////
