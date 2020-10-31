@@ -3,8 +3,11 @@
 - [Express API](#express-api)
   - [OpenAPI and Swagger](#openapi-and-swagger)
   - [Coding Conventions](#coding-conventions)
+  - [Ideas](#ideas)
 
 A CRUD API application that allows users to store their skills. It is a project to research, study and practice building a RESTful OpenAPI-compliant API using Node, TypeScript, Express, MongoDB, JWT, Swagger and other related libraries. Good practices and correct usage of HTTP status codes are a must while implementing this project.
+
+**NOTE**: The main repository where issues and discussions are held is the [Skills-API on Gitlab](https://gitlab.com/fernandobasso/skills-api). The [Github repo](https://github.com/FernandoBasso/skills-api) is just a mirror.
 
 ## OpenAPI and Swagger
 
