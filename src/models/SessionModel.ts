@@ -8,7 +8,7 @@ import {
   IHTTPNotFound,
   IHTTPUnprocessableEntity,
   IUnauthenticated,
-} from 'src/types/HTTPStatuses.t';
+} from 'src/types/HTTPStatusCodes.t';
 
 import {
   TToken,

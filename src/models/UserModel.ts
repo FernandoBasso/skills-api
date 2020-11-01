@@ -12,7 +12,7 @@ import {
 import {
   IHTTPUnprocessableEntity,
   IHTTPConflict,
-} from 'src/types/HTTPStatuses.t';
+} from 'src/types/HTTPStatusCodes.t';
 
 const User = mongoose.model<IUser & Document>('user', new mongoose.Schema({
   name: {

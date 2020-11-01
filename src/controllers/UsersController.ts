@@ -12,7 +12,7 @@ import {
 
 import {
   tgHasStatusCode,
-} from 'src/types/HTTPStatuses.t';
+} from 'src/types/HTTPStatusCodes.t';
 
 import {
   create as userCreate,

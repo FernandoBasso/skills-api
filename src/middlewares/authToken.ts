@@ -7,6 +7,11 @@ import {
   IRequest,
 } from 'src/types/express.t';
 
+import {
+  IUnauthenticated,
+  IHTTPUnprocessableEntity,
+} from 'src/types/HTTPStatusCodes.t';
+
 import jwt from 'jsonwebtoken';
 
 import {
@@ -22,15 +27,22 @@ type TAuthToken = (
 const authToken: TAuthToken  = function authToken (req, res, next) {
   const token: undefined | string = parseToken(req);
 
+  // Bearer token missing. Unprocessable entity.
   if (token === undefined) {
-    return res.sendStatus(401);
+    return res.send({
+      status: 422,
+      message: 'Unprocessable Entity',
+    } as IHTTPUnprocessableEntity);
   }
 
   jwt.verify(
     token,
     process.env.SECRET_TOKEN as string,
-    function verifyToken (err: any, user: any) {
-      if (err) return res.sendStatus(403);
+    function verifyTokenCb (err: any, user: any) {
+      if (err) return res.send({
+        status: 401,
+        message: 'Unauthenticated',
+      });
       req.user = user;
       next();
     }
