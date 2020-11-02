@@ -79,6 +79,8 @@ Now you can point your browser to http://myswaggerui.local:8432/?url=openapi.yml
 
 The Gitlab Wiki is a separate project/repository. We handle it inside the `docs/` directory in the root of the project so it is easy to navigate to its files document stuff without having to open an editor in a different directory in our local machine.
 
+See the [Home Wiki Page](https://gitlab.com/fernandobasso/skills-api/-/wikis/Home) for more details.
+
 ## Ideas
 
 **NOTE**: This is a brainstorming section as of now.
