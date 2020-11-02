@@ -13,3 +13,9 @@ node_modules
 #
 .env
 
+##
+# The Docs Wiki is a separate repository and not committed together with
+# the code of the application.
+#
+docs/
+

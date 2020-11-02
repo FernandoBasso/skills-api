@@ -5,6 +5,7 @@
   - [API Server](#api-server)
   - [OpenAPI and Swagger](#openapi-and-swagger)
   - [Coding Conventions](#coding-conventions)
+  - [Docs, Wiki](#docs-wiki)
   - [Ideas](#ideas)
 
 A CRUD API application that allows users to store their skills. It is a project to research, study and practice building a RESTful OpenAPI-compliant API using Node, TypeScript, Express, MongoDB, JWT, Swagger and other related libraries. Good practices and correct usage of HTTP status codes are a must while implementing this project.
@@ -74,6 +75,9 @@ Now you can point your browser to http://myswaggerui.local:8432/?url=openapi.yml
 - Name controllers like `UsersController` and `CategoriesController`. The controller noun is usually in the plural.
 - Favor a functional programming style and shy away from classes or OO (PS: I'm not against OO and classes, but for this project I'll stick to a FP style of programming).
 
+## Docs, Wiki
+
+The Gitlab Wiki is a separate project/repository. We handle it inside the `docs/` directory in the root of the project so it is easy to navigate to its files document stuff without having to open an editor in a different directory in our local machine.
 
 ## Ideas
 
