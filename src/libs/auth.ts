@@ -23,7 +23,7 @@ import {
  * For now, we are signing the tokens using only the email which is available
  * both when signing up and when signing in.
  */
-export function generateLoginToken (user: IUser): string {
+export function generateSessionToken (user: IUser): string {
   const data = {
     email: user.email,
   };

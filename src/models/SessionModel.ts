@@ -19,7 +19,7 @@ import {
 } from 'src/models/UserModel';
 
 import {
-  generateLoginToken,
+  generateSessionToken,
 } from 'src/libs/auth';
 
 /**
@@ -55,7 +55,7 @@ async function create (
     } as IUnauthenticated;
   }
 
-  return generateLoginToken(user);
+  return generateSessionToken(user);
 };
 
 export {

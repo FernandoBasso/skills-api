@@ -2,7 +2,7 @@ import { Response } from 'express';
 import { IRequest } from 'src/types/express.t';
 import { IUser } from 'src/types/User.t';
 import { authToken } from '../authToken';
-import { generateLoginToken } from 'src/libs/auth';
+import { generateSessionToken } from 'src/libs/auth';
 
 import {
   IHTTPUnprocessableEntity,
@@ -68,7 +68,7 @@ describe('authToken()', () => {
       password: 's3cr37',
     };
 
-    const properlySignedToken = generateLoginToken(user);
+    const properlySignedToken = generateSessionToken(user);
 
     const mockReq: Partial<IRequest> = {
       headers: {
