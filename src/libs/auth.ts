@@ -28,7 +28,7 @@ export function generateSessionToken (user: IUser): string {
     email: user.email,
   };
 
-  return jwt.sign(data, process.env.SECRET_TOKEN as jwt.Secret, { expiresIn: 60 * 7 });
+  return jwt.sign(data, process.env.JWT_SECRET as jwt.Secret, { expiresIn: 60 * 7 });
 };
 
 /**

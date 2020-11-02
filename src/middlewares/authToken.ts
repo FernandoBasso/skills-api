@@ -37,7 +37,7 @@ const authToken: TAuthToken  = function authToken (req, res, next) {
 
   jwt.verify(
     token,
-    process.env.SECRET_TOKEN as string,
+    process.env.JWT_SECRET as string,
     function verifyTokenCb (err: any, user: any) {
       if (err) return res.send({
         status: 401,
