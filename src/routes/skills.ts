@@ -4,6 +4,7 @@ import {
 
 import {
   index,
+  create,
 } from 'src/controllers/SkillsController';
 
 import {
@@ -23,6 +24,7 @@ const skillsRouter = Router();
 //
 
 skillsRouter.get('/', authToken, index);
+skillsRouter.post('/', authToken, create);
 
 export {
   skillsRouter,

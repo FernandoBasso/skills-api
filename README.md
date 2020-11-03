@@ -74,6 +74,7 @@ Now you can point your browser to http://myswaggerui.local:8432/?url=openapi.yml
 - Name models like `UserModel` and `CategoryModel`. Use the singular form.
 - Name controllers like `UsersController` and `CategoriesController`. The controller noun is usually in the plural.
 - Favor a functional programming style and shy away from classes or OO (PS: I'm not against OO and classes, but for this project I'll stick to a FP style of programming).
+- All data is returned in an object `{ data: <actual data from MongoDB> }` and all error responses in an object like `{ error: <error object> }`. Check `IBaseData` and `IBaseError` on `general.t.ts`.
 
 ## Docs, Wiki
 
@@ -88,13 +89,12 @@ See the [Home Wiki Page](https://gitlab.com/fernandobasso/skills-api/-/wikis/Hom
 Example:
 
 ```
-  user1:
-    - JavaScript
-      - topics, closures, - [Express API](#express-api)
-  - [OpenAPI and Swagger](#openapi-and-swagger)
-  - [Coding Conventions](#coding-conventions)lexical-scope, functions.
-    - Ruby,
-    -   topics: Singleton, classes, methods, irb
+user1:
+- JavaScript
+  - topics: closures, lexical-scope, functions, generators
+- Ruby
+  - topics: Singleton, classes, methods, irb, C Extensions
+
 ```
 
 Each topic can link to a description of what that person has done, their experience in that topic.
