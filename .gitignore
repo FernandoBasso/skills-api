@@ -7,11 +7,13 @@
 node_modules
 
 ##
-# We NEVER commit the ‘.env’ file. Rather, we commit a ‘.env.example’
-# file with all the required keys with examples and only set real
-# values on the local, git-ignored ‘.env’ file.
+# We NEVER commit the ‘.env.{test,devel,prod}’ file. Rather, we commit a
+# ‘.env.example’ file with all the required keys with examples and only
+# set real values on the local, git-ignored ‘.env’ file.
 #
 .env
+.env.test
+.env.devel
 
 ##
 # The Docs Wiki is a separate repository and not committed together with

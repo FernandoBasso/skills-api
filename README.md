@@ -24,6 +24,8 @@ $ nvm install < .nvmrc
 $ npm install
 ```
 
+Take a look at the comments in `config/.env.example` as well for instructions on the local development environment configs necessary to run the project.
+
 
 ## API Server
 
