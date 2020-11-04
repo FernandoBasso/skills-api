@@ -9,7 +9,7 @@ import { MongoError } from 'mongodb';
 import {
   IBaseError,
   IBaseData,
-} from 'src/types/general.t';
+} from 'src/types/Base.t';
 
 interface ISkill extends Document {
   title: string,
