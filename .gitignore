@@ -19,3 +19,8 @@ node_modules
 #
 docs/
 
+##
+# Jest code coverage.
+#
+coverage/
+
