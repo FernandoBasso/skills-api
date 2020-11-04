@@ -4,9 +4,9 @@
   "version": "0.0.1",
   "main": "src/index.ts",
   "scripts": {
-    "api": "NODE_PATH=. nodemon src/index.ts",
+    "api": "NODE_PATH=. NODE_ENV=devel nodemon src/index.ts",
     "swaggerui": "nodemon src/swagger.ts",
-    "test": "NODE_PATH=. jest"
+    "test": "NODE_PATH=. NODE_ENV=test jest"
   },
   "author": "Fernando Basso <fernandobasso.br@gmail.com>",
   "license": "LGPL-3.0-or-later",

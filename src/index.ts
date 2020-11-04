@@ -1,14 +1,14 @@
 import express from 'express';
 import bodyParser from 'body-parser';
-// import swaggerUI from 'swagger-ui-express';
-// import YAML from 'yamljs';
-
 import dotenv from 'dotenv';
+import {
+  getEnvFile,
+} from 'config/helpers';
 
 /**
- * Loads the key-value pairs from ‘.env’.
+ * Loads the key-value pairs from .env.<some-env>.
  */
-dotenv.config();
+dotenv.config({ path: getEnvFile() });
 
 import { skillsRouter } from 'src/routes/skills';
 import { usersRouter } from 'src/routes/users';
