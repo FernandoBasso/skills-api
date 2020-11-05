@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 
-export default function dbInit () {
+export function dbInit () {
   mongoose.connect('mongodb://localhost/skillsapi', {
     useNewUrlParser: true,
     useUnifiedTopology: true,
@@ -13,4 +13,3 @@ export default function dbInit () {
     console.log('DB Connected Successfully!');
   });
 };
-

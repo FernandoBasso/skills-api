@@ -3,6 +3,7 @@
 - [Express API](#express-api)
   - [Setup](#setup)
   - [API Server](#api-server)
+  - [Testing](#testing)
   - [OpenAPI and Swagger](#openapi-and-swagger)
   - [Coding Conventions](#coding-conventions)
   - [Docs, Wiki](#docs-wiki)
@@ -41,6 +42,27 @@ Then run:
 $ npm run api
 ```
 
+## Testing
+
+We have unit tests and integration tests (so far). The unit tests use Jest to test specific TypeScript code. The integration tests run on Jest with SuperTest and focus on the API endpoints. There may be some exceptions, but that is the main idea.
+
+Run unit tests:
+
+```
+$ npm run test:unit
+```
+
+Or:
+
+```
+$ npm run test:unit -- --watch --verbose --coverage
+```
+
+Run integration tests:
+
+```
+$ npm run test:integration
+```
 
 ## OpenAPI and Swagger
 
