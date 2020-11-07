@@ -1,3 +1,7 @@
+import {
+  Document,
+} from 'mongoose';
+
 /**
  * To sign up (register) the user needs to provided an
  * email and a password. The encrypted password is then
@@ -10,11 +14,9 @@ export interface IUserSignUp {
   encryptedPassword?: string;
 };
 
-export interface IUser {
+export interface IUser extends Document {
   name: string;
   email: string;
   password: string;
   encryptedPassword?: string;
 };
-
-

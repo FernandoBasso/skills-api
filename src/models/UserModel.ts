@@ -14,10 +14,12 @@ import {
   IHTTPConflict,
 } from 'src/types/HTTPStatusCodes.t';
 
-const User = mongoose.model<IUser & Document>('user', new mongoose.Schema({
+const UserSchema =  new mongoose.Schema({
   name: {
     type: String,
     required: false,
+    minlength: 3,
+    maxlength: 64,
   },
   email: {
     type: String,
@@ -35,10 +37,12 @@ const User = mongoose.model<IUser & Document>('user', new mongoose.Schema({
     type: Date,
     default: undefined,
   },
-}));
+});
+
+const User = mongoose.model<IUser>('User', UserSchema);
 
 /**
- * Attemps to find the user by one of the possible user fields.
+ * Attempts to find the user by one of the possible user fields.
  */
 async function findByEmail (email: string): Promise<null | Document & IUser> {
   return User.findOne({ email });
@@ -61,7 +65,7 @@ async function create (
   if (found) {
     return {
       status: 409,
-      message: 'An user with that email already exists',
+      message: 'A user with that email already exists.',
     } as IHTTPConflict;
   }
 
@@ -80,7 +84,8 @@ async function create (
 
 
 export {
-  // User,
+  UserSchema,
+  User,
   findByEmail,
   create,
 };
