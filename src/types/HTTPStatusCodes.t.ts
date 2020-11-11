@@ -15,28 +15,28 @@ interface IStatusMessage {
 export interface IHTTPUnprocessableEntity extends IStatusMessage {
   status: 422;
   message: string;
-};
+}
 
 /**
  * 409 Conflict.
  */
 export interface IHTTPConflict extends IStatusMessage {
   status: 409;
-};
+}
 
 /**
  * 404 Not Found.
  */
 export interface IHTTPNotFound extends IStatusMessage {
   status: 404;
-};
+}
 
 /**
  * 401 Unauthenticated.
  */
 export interface IUnauthenticated extends IStatusMessage {
   status: 401;
-};
+}
 
 //////////////////////////////////////////////////////////////////////////////
 // Type Guards
@@ -48,7 +48,6 @@ export interface IUnauthenticated extends IStatusMessage {
  * A Type Guard to check whether the given ‘t’ parameter
  * is an object that contains the ‘status’ property.
  */
-export function tgHasStatusCode(t: any): t is { status: number } {
+export function tgHasStatusCode(t: unknown): t is { status: number } {
   return (t as { status: number }).status !== undefined;
 }
-

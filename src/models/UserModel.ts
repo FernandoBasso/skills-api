@@ -7,6 +7,7 @@ import bcrypt from 'bcryptjs';
 import {
   IUserSignUp,
   IUser,
+  IUserDoc,
 } from 'src/types/User.t';
 
 import {
@@ -14,7 +15,7 @@ import {
   IHTTPConflict,
 } from 'src/types/HTTPStatusCodes.t';
 
-const UserSchema =  new mongoose.Schema({
+const UserSchema = new mongoose.Schema({
   name: {
     type: String,
     required: false,
@@ -39,17 +40,17 @@ const UserSchema =  new mongoose.Schema({
   },
 });
 
-const User = mongoose.model<IUser>('User', UserSchema);
+const User = mongoose.model<IUserDoc>('User', UserSchema);
 
 /**
  * Attempts to find the user by one of the possible user fields.
  */
-async function findByEmail (email: string): Promise<null | Document & IUser> {
+async function findByEmail(email: string): Promise<null | Document & IUser> {
   return User.findOne({ email });
-};
+}
 
-async function create (
-  signInData: IUserSignUp
+async function create(
+  signInData: IUserSignUp,
 ): Promise<IHTTPConflict | IHTTPUnprocessableEntity | IUser> {
   const { email, password } = signInData;
 
@@ -80,8 +81,7 @@ async function create (
   await user.save();
 
   return user;
-};
-
+}
 
 export {
   UserSchema,
@@ -89,4 +89,3 @@ export {
   findByEmail,
   create,
 };
-;

@@ -17,15 +17,15 @@ interface IBaseData<T> {
 /**
  * A type guard to validate we have a `IBaseError`.
  */
-const tgIsBaseError = (t: any): t is IBaseError<any> => {
-  return (t as IBaseError<any>).error !== undefined;
+const tgIsBaseError = (t: unknown): t is IBaseError<unknown> => {
+  return (t as IBaseError<unknown>).error !== undefined;
 };
 
 /**
  * A type guard check we have a `IBaseData` (not an error).
  */
-const tgIsBaseData = (t: any): t is IBaseData<any> => {
-  return (t as IBaseData<any>).data !== undefined;
+const tgIsBaseData = (t: unknown): t is IBaseData<unknown> => {
+  return (t as IBaseData<unknown>).data !== undefined;
 };
 
 export {

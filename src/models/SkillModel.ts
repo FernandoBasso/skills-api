@@ -27,7 +27,7 @@ SkillSchema.path('title').index({ unique: true });
 const Skill = mongoose.model<ISkill>('Skill', SkillSchema);
 
 const create = async (
-  skill: CreateQuery<ISkill>
+  skill: CreateQuery<ISkill>,
 ): Promise<IBaseError<MongoError> | IBaseData<ISkill>> => {
   try {
     const skillResult = await Skill.create(skill);
@@ -42,4 +42,3 @@ export {
   SkillSchema,
   create,
 };
-

@@ -1,4 +1,4 @@
-import { IUser } from 'src/models/User';
+// import { IUser } from 'src/models/User';
 
 ////
 // We need to store the authenticated user express.Request.
@@ -10,4 +10,3 @@ import { IUser } from 'src/models/User';
 //     }
 //   }
 // }
-

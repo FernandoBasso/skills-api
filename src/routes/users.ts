@@ -13,4 +13,3 @@ usersRouter.post('/', create);
 export {
   usersRouter,
 };
-

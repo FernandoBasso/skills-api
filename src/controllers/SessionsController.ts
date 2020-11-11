@@ -20,9 +20,12 @@ import {
  * It needs a user with an email and password, generates the token
  * and sends it back to the client.
  */
-export async function sessionsPOST (req: IRequest, res: Response): Promise<void> {
-  const data: IUser = req.body.data;
+async function sessionsPOST(req: IRequest, res: Response): Promise<void> {
+  const { body: { data } }: { body: { data: IUser } } = req;
   const token = await create(data);
   res.json({ token });
 }
 
+export {
+  sessionsPOST,
+};

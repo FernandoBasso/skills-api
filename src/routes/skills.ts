@@ -29,4 +29,3 @@ skillsRouter.post('/', authToken, create);
 export {
   skillsRouter,
 };
-

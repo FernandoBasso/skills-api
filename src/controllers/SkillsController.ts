@@ -19,22 +19,19 @@ import {
 
 import {
   ISkill,
+  create as skillCreate,
 } from 'src/models/SkillModel';
 
 import {
   MONGO_DUPLICATE_KEY_ERROR,
 } from 'src/consts';
 
-import {
-  create as skillCreate,
-} from 'src/models/SkillModel';
-
-function index (req: IRequest, res: Response): void {
+function index(req: IRequest, res: Response): void {
   // @NOTE: Dummy data just to get basic stuff working.
   res.send(['The Force', 'TypeScript', 'Lightsaber']);
 }
 
-async function create (req: IRequest, res: Response): Promise<void> {
+async function create(req: IRequest, res: Response): Promise<void> {
   const skillName = req.body.data;
   const result = await skillCreate(skillName);
 
@@ -59,7 +56,7 @@ async function create (req: IRequest, res: Response): Promise<void> {
     status: 200,
     ...result as IBaseData<ISkill>,
   });
-};
+}
 
 export {
   index,

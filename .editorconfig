@@ -12,7 +12,7 @@ max_line_length = 88
 [*.{rb,blade.php,scss}]
 indent_size = 2
 
-[*.md]
+[*.{md,json}]
 max_line_length = 0
 trim_trailing_whitespace = false
 

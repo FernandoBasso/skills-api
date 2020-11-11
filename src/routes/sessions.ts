@@ -13,4 +13,3 @@ sessionsRouter.get('/', index);
 export {
   sessionsRouter,
 };
-

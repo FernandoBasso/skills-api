@@ -15,6 +15,7 @@ const PORT = Number(process.env.PORT) || 3001;
 //
 dbInit();
 
-app.listen(PORT, HOST, function listener () {
+app.listen(PORT, HOST, function listener() {
+  // eslint-disable-next-line no-console
   console.log(`App listening on http://${HOST}:${PORT}`);
 });

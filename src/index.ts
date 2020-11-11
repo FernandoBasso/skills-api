@@ -1,14 +1,11 @@
-import express from 'express';
+import express, {
+  Express,
+} from 'express';
 import bodyParser from 'body-parser';
 import dotenv from 'dotenv';
 import {
   getEnvFile,
 } from 'config/helpers';
-
-/**
- * Loads the key-value pairs from .env.<some-env>.
- */
-dotenv.config({ path: getEnvFile() });
 
 import { skillsRouter } from 'src/routes/skills';
 import { usersRouter } from 'src/routes/users';
@@ -18,7 +15,12 @@ import {
   sessionsPOST,
 } from 'src/controllers/SessionsController';
 
-const app = express();
+/**
+ * Loads the key-value pairs from .env.<some-env>.
+ */
+dotenv.config({ path: getEnvFile() });
+
+const app: Express = express();
 app.use(bodyParser.json());
 
 ////

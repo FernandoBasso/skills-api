@@ -26,8 +26,8 @@ import {
  * Verifies that user email and password are provided and can be
  * successfully verified and returns the generated login token.
  */
-async function create (
-  user: IUser
+async function create(
+  user: IUser,
 ): Promise<IHTTPUnprocessableEntity | IHTTPNotFound | IUnauthenticated | TToken> {
   const { email, password } = user;
   if (!email || !password) {
@@ -56,8 +56,8 @@ async function create (
   }
 
   return generateSessionToken(user);
-};
+}
 
 export {
   create,
-}
+};

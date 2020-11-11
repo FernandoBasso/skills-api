@@ -11,5 +11,4 @@ import { resolve } from 'path';
 export function getEnvFile(): string {
   const nodeEnv = process.env.NODE_ENV || 'devel';
   return resolve(__dirname, `.env.${nodeEnv}`);
-};
-
+}

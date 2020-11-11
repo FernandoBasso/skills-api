@@ -22,7 +22,7 @@ import {
  * @POST
  * Creates a new user resource.
  */
-export async function create (req: IRequest, res: Response): Promise<void> {
+export async function create(req: IRequest, res: Response): Promise<void> {
   const signUpData: IUserSignUp = req.body.data;
   const data = await userCreate(signUpData);
 
@@ -40,5 +40,4 @@ export async function create (req: IRequest, res: Response): Promise<void> {
   // standard 200 OK response with the user data.
   //
   res.json(data);
-};
-
+}

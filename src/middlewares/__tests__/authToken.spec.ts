@@ -1,12 +1,12 @@
 import { Response } from 'express';
 import { IRequest } from 'src/types/express.t';
 import { IUser } from 'src/types/User.t';
-import { authToken } from '../authToken';
 import { generateSessionToken } from 'src/libs/auth';
-
 import {
   IHTTPUnprocessableEntity,
 } from 'src/types/HTTPStatusCodes.t';
+
+import { authToken } from '../authToken';
 
 describe('authToken()', () => {
   it('should return http status 422 with no token is found', async () => {
@@ -16,7 +16,7 @@ describe('authToken()', () => {
     const mockReq: Partial<IRequest> = {
       headers: {
         // Not providing any token on purpose.
-      }
+      },
     };
 
     const mockResp: Partial<Response> = {
@@ -37,11 +37,11 @@ describe('authToken()', () => {
     const spyNextFn = jest.fn();
     const spySend = jest.fn();
 
-    const unsignedWrongToken = 'h4ck3rs-sp33k_133t';
+    const unsignedAndInvalidToken = 'h4ck3rs-sp33k_133t';
 
     const mockReq: Partial<IRequest> = {
       headers: {
-        authorization: 'Bearer h4ck3rs-sp33k_133t',
+        authorization: `Bearer ${unsignedAndInvalidToken}`,
       },
     };
 

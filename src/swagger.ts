@@ -1,6 +1,9 @@
 import express from 'express';
 import { readFileSync } from 'fs';
-const pathToSwaggerUi = require('swagger-ui-dist').absolutePath();
+// const pathToSwaggerUi = require('swagger-ui-dist').absolutePath();
+import swaggerUIDist from 'swagger-ui-dist';
+
+const pathToSwaggerUi = swaggerUIDist.absolutePath();
 
 //
 // @TODO: Handle HTTPS too.
@@ -16,9 +19,8 @@ const pathToSwaggerUi = require('swagger-ui-dist').absolutePath();
 // @TODO: Consider serving this file from another path, or at least make
 // sure we NEVER inadvertently place sensitive stuff in ‘src/openapi/ directory.
 //
-const SWAGGER_OPENAPI_SPEC_FILE_PATH =
-  process.env.SWAGGER_OPENAPI_SPEC_FILE_PATH || 'openapi.yml';
-
+const SWAGGER_OPENAPI_SPEC_FILE_PATH = process.env.SWAGGER_OPENAPI_SPEC_FILE_PATH
+  || 'openapi.yml';
 
 ////
 // Make sure you have the host bellow, or the one you decided to
@@ -82,8 +84,8 @@ const swaggerUIUrl = String.prototype.concat(
 app.listen(
   SWAGGER_PORT,
   SWAGGER_HOST,
-  function swaggerServerListener () {
+  function swaggerServerListener() {
+    // eslint-disable-next-line no-console
     console.log(`Swagger UI on ${swaggerUIUrl}`);
   },
 );
-

@@ -20,4 +20,3 @@ describe('home routes', () => {
     expect(body).toEqual({ text: 'Welcome aboard the Skills API!' });
   });
 });
-

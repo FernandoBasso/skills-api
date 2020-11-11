@@ -3,8 +3,8 @@ import { Express } from 'express';
 import request from 'supertest';
 import dotenv from 'dotenv';
 import { dbInit } from 'src/db';
-import { IUser } from 'src/types/User.t';
 import { User } from 'src/models/UserModel';
+import { IUser, IUserDoc } from 'src/types/User.t';
 
 import {
   getEnvFile,
@@ -13,6 +13,8 @@ import {
 dotenv.config({ path: getEnvFile() });
 
 let dbConnectionClose: ConnectionBase['close'];
+let app: Express;
+let user: IUserDoc;
 
 beforeAll(() => {
   dbConnectionClose = dbInit();
@@ -21,9 +23,6 @@ beforeAll(() => {
 afterAll(() => {
   dbConnectionClose();
 });
-
-var app: Express;
-var user: IUser;
 
 beforeEach(async () => {
   const mod = await import('src/index');
@@ -73,4 +72,3 @@ describe('/users', () => {
     });
   });
 });
-
