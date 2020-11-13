@@ -10,6 +10,7 @@ import {
 import { skillsRouter } from 'src/routes/skills';
 import { usersRouter } from 'src/routes/users';
 import { sessionsRouter } from 'src/routes/sessions';
+import { usersSkillsRouter } from 'src/routes/users-skills';
 
 import {
   sessionsPOST,
@@ -36,6 +37,7 @@ app.get('/', (req, res) => {
 app.use('/users', usersRouter);
 app.use('/sessions', sessionsRouter);
 app.use('/skills', skillsRouter);
+app.use('/users-skills', usersSkillsRouter);
 
 ////
 // Login.

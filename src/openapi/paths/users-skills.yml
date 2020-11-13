@@ -1,0 +1,11 @@
+post:
+  summary: Links a skill to a user
+  description: Adds a new or existing skill to a user
+  responses:
+    '200':
+      description: The
+      content:
+        application/json:
+          schema:
+            type: object
+

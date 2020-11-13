@@ -12,3 +12,5 @@ servers:
 paths:
   /skills:
     $ref: './paths/skills.yml'
+  /users-skills:
+    $ref: './paths/users-skills.yml'
