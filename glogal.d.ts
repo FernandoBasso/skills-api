@@ -1,3 +1,4 @@
+/* eslint-disable */
 // import { IUser } from 'src/models/User';
 
 ////

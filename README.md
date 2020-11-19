@@ -98,7 +98,34 @@ Now you can point your browser to http://myswaggerui.local:8432/?url=openapi.yml
 - Name models like `UserModel` and `CategoryModel`. Use the singular form.
 - Name controllers like `UsersController` and `CategoriesController`. The controller noun is usually in the plural.
 - Favor a functional programming style and shy away from classes or OO (PS: I'm not against OO and classes, but for this project I'll stick to a FP style of programming).
+- Models either return the object with the data stored/updated/etc or throw an appropriate exception for each class of error.
 - All data is returned in an object `{ data: <actual data from MongoDB> }` and all error responses in an object like `{ error: <error object> }`. Check `IBaseData` and `IBaseError` on `general.t.ts`.
+
+
+
+## Controllers and Models Responsibilities
+
+The model knows why something went wrong (not found, invalid arguments, etc.) but according to web searches ([1](https://softwareengineering.stackexchange.com/questions/312674/is-model-a-better-place-to-set-http-status-code)) it is wrong to determine which HTTP Status Codes to respond with from the models. They say the controllers should decide on the status codes to respond with.
+
+Models could throw exceptions like `IllegalArgumentException` or `NoSuchEntityException` which would map to 422, 404, etc. status codes in the controller.
+
+So, our models either return the successful data or throw exceptions. The exceptions contain a message with a precise reason for the failure. The controllers handle those exceptions and translate them to appropriate HTTP Status Codes, sending the status code, the status HTTP Message, and the business logic message  from the Model exception message. Example:
+
+Model:
+```
+throw new Exception('User with email <email> already exists');
+```
+
+Controller:
+```res.send(409).send({
+respose.status(409).send({
+  status: 409,
+  message: 'Conflict',
+  detailedMessage: 'User with email <email> already exists'
+});
+```
+
+
 
 ## Docs, Wiki
 

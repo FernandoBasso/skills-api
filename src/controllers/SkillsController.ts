@@ -14,11 +14,9 @@ import {
 
 import {
   tgIsBaseError,
-  IBaseData,
 } from 'src/types/Base.t';
 
 import {
-  ISkill,
   create as skillCreate,
 } from 'src/models/SkillModel';
 
@@ -54,7 +52,7 @@ async function create(req: IRequest, res: Response): Promise<void> {
 
   res.send({
     status: 200,
-    ...result as IBaseData<ISkill>,
+    data: result,
   });
 }
 

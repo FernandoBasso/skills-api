@@ -9,7 +9,10 @@
     "swaggerui": "nodemon src/swagger.ts",
     "test:unit": "NODE_PATH=. NODE_ENV=test jest",
     "test:integration": "NODE_PATH=. NODE_ENV=test jest --no-cache src/tests/integration/",
-    "lint": "NODE_ENV=lint eslint . --ext .ts"
+    "lint": "NODE_ENV=lint eslint . --ext .ts",
+    "db:devel:setup": "mongo config/db-devel-setup.js",
+    "db:devel:seed": "mongo config/db-devel-seed.js",
+    "db:test:setup": "mongo config/db-test-setup.js"
   },
   "author": "Fernando Basso <fernandobasso.br@gmail.com>",
   "license": "LGPL-3.0-or-later",

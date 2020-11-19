@@ -4,7 +4,7 @@ import request from 'supertest';
 import dotenv from 'dotenv';
 import { dbInit } from 'src/db';
 import { User } from 'src/models/UserModel';
-import { IUser, IUserDoc } from 'src/types/User.t';
+import { IUserDoc } from 'src/types/User.t';
 
 import {
   getEnvFile,

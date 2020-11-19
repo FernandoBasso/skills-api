@@ -1,17 +1,18 @@
 import mongoose, {
   Schema,
   Document,
-  CreateQuery,
 } from 'mongoose';
 
-import { MongoError } from 'mongodb';
+import {
+  DocumentCreationError,
+} from 'src/libs/exceptions';
 
 import {
   IBaseError,
   IBaseData,
 } from 'src/types/Base.t';
 
-interface ISkill extends Document {
+interface ISkillDoc extends Document {
   title: string,
 }
 
@@ -24,21 +25,44 @@ const SkillSchema: Schema = new Schema({
 
 SkillSchema.path('title').index({ unique: true });
 
-const Skill = mongoose.model<ISkill>('Skill', SkillSchema);
+const Skill = mongoose.model<ISkillDoc>('Skill', SkillSchema);
+
+const findByTitle = async (
+  title: string,
+): Promise<IBaseError<unknown> | IBaseData<ISkillDoc>> => {
+  const regex = new RegExp(`^${title}$`, 'i');
+
+  const skill = await Skill.findOne({
+    title: { $regex: regex },
+  });
+
+  if (skill !== null) {
+    return { data: skill } as IBaseData<ISkillDoc>;
+  }
+
+  return {
+    error: {
+      message: 'Skill not found',
+    },
+  } as IBaseError<unknown>;
+};
 
 const create = async (
-  skill: CreateQuery<ISkill>,
-): Promise<IBaseError<MongoError> | IBaseData<ISkill>> => {
+  // skill: CreateQuery<ISkillDoc>,
+  title: string,
+): Promise<never | ISkillDoc> => {
   try {
-    const skillResult = await Skill.create(skill);
-    return { data: skillResult } as IBaseData<ISkill>;
+    const skillResult = await Skill.create({ title });
+    return skillResult;
   } catch (error) {
-    return { error } as IBaseError<MongoError>;
+    throw new DocumentCreationError(`Could not create the skill “${title}”.`);
   }
 };
 
 export {
-  ISkill,
+  ISkillDoc,
   SkillSchema,
+  Skill,
+  findByTitle,
   create,
 };

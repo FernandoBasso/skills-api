@@ -50,5 +50,10 @@ module.exports = {
     // creating headers and sections.
     //
     'spaced-comment': ['error', 'always', { exceptions: ['/', '-', '+', '=', '*'] }],
+
+    ////
+    // MongoDB needs “_id”...
+    //
+    'no-underscore-dangle': ['error', { allow: ['_id'] }]
   }
 };
