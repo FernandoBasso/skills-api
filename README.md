@@ -21,11 +21,17 @@ A CRUD API application that allows users to store their skills. It is a project 
 Install [nvm](https://github.com/nvm-sh/nvm) then run:
 
 ```
-$ nvm install < .nvmrc
-$ npm install
+nvm install < .nvmrc
+npm install
 ```
 
-Take a look at the comments in `config/.env.example` as well for instructions on the local development environment configs necessary to run the project.
+Setup the `config/.env.devel` and `config/.env.test` files:
+
+```
+cat config/.env.example | tee config/.env.{devel,test}
+```
+
+Take a look at the comments in generated files  for instructions on the local development environment configs necessary to run the project. Make sure you review the keys (they are documented) and set the appropriate stuff, like mongo host, db name, etc.
 
 
 ## API Server
@@ -38,8 +44,8 @@ Add this line to `/etc/hosts`:
 
 Then run:
 
-```
-$ npm run api
+```shell-session
+npm run api
 ```
 
 ## Testing
@@ -49,19 +55,19 @@ We have unit tests and integration tests (so far). The unit tests use Jest to te
 Run unit tests:
 
 ```
-$ npm run test:unit
+npm run test:unit
 ```
 
 Or:
 
 ```
-$ npm run test:unit -- --watch --verbose --coverage
+npm run test:unit -- --watch --verbose --coverage
 ```
 
 Run integration tests:
 
 ```
-$ npm run test:integration
+npm run test:integration
 ```
 
 ## OpenAPI and Swagger
@@ -75,16 +81,16 @@ Add this line to `/etc/hosts`:
 
 Run
 
-```
-$ npm run swaggerui
+```shell-session
+npm run swaggerui
 ```
 
 Then point your browser to the URL http://swagger.skillsapi.local:3002/?url=openapi.yml which was logged on the terminal.
 
 It is also possible to start the server with a different host and port. Just make sure that whatever host you pass as an env var also exists in `/etc/hosts` as an alias to 127.0.0.1 (as exemplified above):
 
-```
-$ SWAGGER_HOST=myswaggerui.local SWAGGER_PORT=8432 npm run swagger
+```shell-session
+SWAGGER_HOST=myswaggerui.local SWAGGER_PORT=8432 npm run swagger
 ```
 
 Now you can point your browser to http://myswaggerui.local:8432/?url=openapi.yml, as logged on your terminal.
@@ -97,7 +103,6 @@ Now you can point your browser to http://myswaggerui.local:8432/?url=openapi.yml
 - Start Type Guard functions with `tg`, like `tgHasStatusCode` or `tgIsUser`.
 - Name models like `UserModel` and `CategoryModel`. Use the singular form.
 - Name controllers like `UsersController` and `CategoriesController`. The controller noun is usually in the plural.
-- Favor a functional programming style and shy away from classes or OO (PS: I'm not against OO and classes, but for this project I'll stick to a FP style of programming).
 - Models either return the object with the data stored/updated/etc or throw an appropriate exception for each class of error.
 - All data is returned in an object `{ data: <actual data from MongoDB> }` and all error responses in an object like `{ error: <error object> }`. Check `IBaseData` and `IBaseError` on `general.t.ts`.
 
