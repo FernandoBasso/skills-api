@@ -6,8 +6,14 @@
   - [Testing](#testing)
   - [OpenAPI and Swagger](#openapi-and-swagger)
   - [Coding Conventions](#coding-conventions)
+  - [Controllers and Models Responsibilities](#controllers-and-models-responsibilities)
   - [Docs, Wiki](#docs-wiki)
   - [Ideas](#ideas)
+  - [MongoDB](#mongodb)
+    - [Install](#install)
+    - [Start MongoDB](#start-mongodb)
+    - [Stop MongoDB](#stop-mongodb)
+    - [References](#references)
 
 A CRUD API application that allows users to store their skills. It is a project to research, study and practice building a RESTful OpenAPI-compliant API using Node, TypeScript, Express, MongoDB, JWT, Swagger and other related libraries. Good practices and correct usage of HTTP status codes are a must while implementing this project.
 
@@ -39,7 +45,7 @@ Take a look at the comments in generated files  for instructions on the local de
 Add this line to `/etc/hosts`:
 
 ```
-127.0.0.1 http://skillsapi.local
+127.0.0.1 local.skillsapi.dev
 ```
 
 Then run:
@@ -155,3 +161,84 @@ user1:
 
 Each topic can link to a description of what that person has done, their experience in that topic.
 
+## MongoDB
+
+### Install
+
+```
+$ mkdir -pv ~/local/mongodb/{mongo,data,logs}
+$ cd ~/local
+
+$ wget https://fastdl.mongodb.org/osx/mongodb-macos-x86_64-5.0.3.tgz
+
+$ tar -zxvf \
+    ~/local/mongodb-macos-x86_64-5.0.3.tgz \
+    -C ~/local/mongodb/mongo \
+    --strip-components=1
+
+$ ln -sv ~/local/mongodb/mongo/bin/* ~/local/bin
+```
+
+Make sure `~/local/bin` is in `PATH`, for exampe, add this to your shell rc file:
+
+```
+export PATH="$PATH:$HOME/local/bin"
+```
+
+Could be done with this command:
+
+```text
+$ cat <<'EOF' | tee --append "$HOME/.bashrc"
+
+export PATH="$PATH:$HOME/local/bin"
+EOF
+
+$ tail -n 2 ~/.bashrc
+
+$ source ~/.bashrc
+
+printf %s "$PATH" | sed 's/:/\n/g' | grep "$HOME/local/bin"
+```
+
+### Start MongoDB
+
+Then start mongo (note the “d”):
+
+```text
+$ mongod \
+    --dbpath ~/local/mongodb/data \
+    --logpath ~/local/mongodb/logs/mongo.log \
+    --fork
+```
+
+If we omit the `--fork` option, then we can simply stop the server with
+`Ctrl+c`. I'm not sure if that is a graceful shutdown, though.
+
+### Stop MongoDB
+
+The very useful `mongod --shutdown` command /works on Linux, but it is not
+available for MongoDB on other OSes. We have to this (no “d”, `mongo`, not
+`mongod`):
+
+```text
+$ mongo
+use admin
+db.shutdownServer()
+Ctrl+d
+```
+
+Or, from the shell only:
+
+```text
+$ mongo localhost/admin --eval 'db.shutdownServer()'
+```
+
+**NOTE**: Using either approach above we get an error about connection refused.
+It is probably because the connection is lost, since mongo server was just shut
+down.
+
+### References
+
+- https://docs.mongodb.com/manual/administration/install-community/
+- https://docs.mongodb.com/database-tools/
+- https://docs.mongodb.com/manual/tutorial/manage-mongodb-processes/
