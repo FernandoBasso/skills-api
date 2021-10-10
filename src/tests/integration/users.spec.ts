@@ -1,4 +1,4 @@
-import { ConnectionBase } from 'mongoose';
+import { Connection } from 'mongoose';
 import { Express } from 'express';
 import request from 'supertest';
 import dotenv from 'dotenv';
@@ -12,7 +12,7 @@ import {
 
 dotenv.config({ path: getEnvFile() });
 
-let dbConnectionClose: ConnectionBase['close'];
+let dbConnectionClose: Connection['close'];
 let app: Express;
 let user: IUserDoc;
 

@@ -1,5 +1,5 @@
 import mongoose, {
-  ConnectionBase,
+  Connection,
 } from 'mongoose';
 
 const nodeEnv = process.env.NODE_ENV;
@@ -9,14 +9,11 @@ const nodeEnv = process.env.NODE_ENV;
  * in process.env.MONGO_HOST and process.env.MONGO_DBNAME. Returns
  * a function that closes the Mongo connection when invoked.
  */
-export function dbInit(): ConnectionBase['close'] {
+export function dbInit(): Connection['close'] {
   const host = process.env.MONGO_HOST;
   const dbName = process.env.MONGO_DBNAME;
 
-  mongoose.connect(`mongodb://${host}/${dbName}`, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  });
+  mongoose.connect(`mongodb://${host}/${dbName}`);
 
   const db = mongoose.connection;
 

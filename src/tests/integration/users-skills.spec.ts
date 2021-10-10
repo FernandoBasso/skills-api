@@ -1,5 +1,5 @@
 /* eslint-disable */
-import mongoose, { ConnectionBase } from 'mongoose';
+import mongoose, { Connection } from 'mongoose';
 import { Express } from 'express';
 import request from 'supertest';
 import dotenv from 'dotenv';
@@ -32,7 +32,7 @@ interface ITestResponse<T> extends request.Response {
   body: T;
 }
 
-let dbConnectionClose: ConnectionBase['close'];
+let dbConnectionClose: Connection['close'];
 let app: Express;
 let testUser: IUserDoc;
 let testSkill: ISkillDoc;
